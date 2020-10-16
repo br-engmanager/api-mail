@@ -38,7 +38,7 @@ public class EmailService {
 	        
 	        helper.setFrom(new InternetAddress("contato@tijo.com.br"));
 	        helper.setTo(emailRequestDTO.getEmail());
-	        helper.setSubject("Reset de Senha Tijo	");
+	        helper.setSubject("[TIJO] - Redefini\u00E7\u00E3o de Senha");
 	        helper.setText(body, true);
 
             mailSender.send(message);
