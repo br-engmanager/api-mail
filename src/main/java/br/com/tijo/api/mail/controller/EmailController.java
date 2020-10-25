@@ -20,7 +20,7 @@ public class EmailController {
 		this.emailService = emailService;
 	}
 	
-	@PostMapping
+	@PostMapping("/reset")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public String sendEmailToResetPassword(@RequestBody EmailRequestDTO dtoRequest) {
 		return emailService
