@@ -1,6 +1,6 @@
 server: 
   contextPath: /apiv1/api-mail
-  port: "${port:8083}"
+  port: "${port:8086}"
   servlet: 
     contextPath: /apiv1/api-mail
 
