@@ -1,0 +1,43 @@
+server: 
+  contextPath: /apiv1/api-mail
+  port: "${port:8086}"
+  servlet: 
+    contextPath: /apiv1/api-mail
+
+task: 
+  core: 
+    pool: 
+      size: 5
+  max: 
+    pool: 
+      size: 10
+  queue: 
+    capacity: 
+      size: 5
+
+#spring properties
+spring: 
+
+  #spring-boot-starter-mail properties
+  mail: 
+    host: email-ssl.com.br	
+    username: contato@tijo.com.br
+    password: Tijo@$007
+    port: 465
+    properties: 
+      mail:
+        transport:
+          protocol: smtp
+        smtp:
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false 
+          auth: true
+          ssl: 
+            enable: true
+          starttls: 
+            enable: true
+            required: true
+    test-connection: true
+
