@@ -1,6 +1,10 @@
 Manifest-Version: 1.0
-Build-Jdk-Spec: 11
 Implementation-Title: api-mail
-Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Version: 1.0.1
+Built-By: Cleber
+Implementation-Vendor-Id: br.com.tijo
+Build-Jdk: 1.8.0_221
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/api-mail
 Created-By: Maven Integration for Eclipse
 
