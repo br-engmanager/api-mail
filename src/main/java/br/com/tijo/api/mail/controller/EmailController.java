@@ -25,5 +25,14 @@ public class EmailController {
 	public String sendEmailToResetPassword(@RequestBody EmailRequestDTO dtoRequest) {
 		return emailService
 				.sendEmailToResetPassword(dtoRequest);
-	} 
+	}
+
+	@PostMapping("/invite")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public String sendEmailInvite(@RequestBody EmailRequestDTO dtoRequest) {
+		return emailService
+				.sendEmailConvite(dtoRequest);
+	}
+
+	
 }

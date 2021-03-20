@@ -55,4 +55,39 @@ public class EmailService {
             return "Erro ao enviar email.";
         }
 	}
+
+	public String sendEmailConvite(EmailRequestDTO emailRequestDTO){
+		try {
+	        MimeMessage message = mailSender.createMimeMessage();
+	        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+	        
+	        Context context = new Context();
+	
+	        String url = "https://www.tijo.com.br?sub=cadastro";
+	        
+	        String body = templateEngine.process("ConviteMailTemplate.html", context);
+	        
+	        body = body.replace("{url}", url);
+	        
+	        helper.setFrom(new InternetAddress("contato@tijo.com.br"));
+	        helper.setTo(emailRequestDTO.getEmail());
+	        helper.setSubject("[TIJO] - Convite");
+	        helper.setText(body, true);
+
+            mailSender.send(message);
+            
+            return "Email enviado com sucesso!";
+		}catch(MessagingException messaginExecption) {
+			messaginExecption.printStackTrace();
+            return messaginExecption.getLocalizedMessage();
+        }catch(MailException emailException) { 
+        	emailException.printStackTrace();
+            return emailException.getLocalizedMessage();
+	    }catch (Exception genericException) {
+	    	genericException.printStackTrace();
+            return "Erro ao enviar email.";
+        }
+	}
+
+
 }
