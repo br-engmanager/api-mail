@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Implementation-Title: api-mail
-Implementation-Version: 1.0.1
+Implementation-Version: 1.0.3
 Built-By: clebe
 Implementation-Vendor-Id: br.com.tijo
 Build-Jdk: 1.8.0_281

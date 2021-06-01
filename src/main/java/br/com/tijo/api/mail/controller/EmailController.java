@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.tijo.api.mail.dto.ContactEmailRequestDTO;
+import br.com.tijo.api.mail.dto.ContactEmpRequestDTO;
 import br.com.tijo.api.mail.dto.EmailRequestDTO;
 import br.com.tijo.api.mail.service.EmailService;
 
@@ -34,5 +36,20 @@ public class EmailController {
 				.sendEmailConvite(dtoRequest);
 	}
 
-	
+	@PostMapping("/contact")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public String sendEmailInvite(@RequestBody ContactEmailRequestDTO dtoRequest) {
+		emailService
+				.sendContactEmail(dtoRequest);
+		return "{}";
+	}
+
+	@PostMapping("/emp")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public String sendEmailEmp(@RequestBody ContactEmpRequestDTO dtoRequest) {
+		emailService
+				.sendContactEmpEmail(dtoRequest);
+		return "{}";
+	}
+
 }
