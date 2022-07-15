@@ -27,12 +27,14 @@ jobs:
           distribution: 'adopt'
           server-id: github
 
-
       - name: Publish package
         run: mvn -Pgithub -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml --batch-mode assembly:assembly 
         env:
           GIT_USER: ${{ secrets.GIT_USER }}
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+
+      - name: lista
+        run: ls 
 
       - name: Build and push
         uses: docker/build-push-action@v3
