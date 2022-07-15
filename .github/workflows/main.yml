@@ -38,7 +38,7 @@ jobs:
         id: project
         
       - name: Extract Maven project name
-        run: echo ::set-output name=name::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.name}' --non-recursive exec:exec)
+        run: echo ::set-output name=name::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.artifactId}' --non-recursive exec:exec)
         id: project-name
 
       - name: Show extracted Maven project version
