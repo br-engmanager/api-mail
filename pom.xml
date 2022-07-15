@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>br.com.tijo</groupId>
+	<groupId>br.com.engmanager</groupId>
 	<artifactId>api-mail</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.7</version>
 	<name>api-mail</name>
 	<description>Microsserviço responsável pela comunicação com o cliente (email, what's, sms e etc)</description>
 
@@ -24,6 +24,13 @@
         <sonar.dependencyCheck.reportPath>${basedir}/dependency-check-report.xml</sonar.dependencyCheck.reportPath>
 	</properties>
 	
+	<distributionManagement>
+	   <repository>
+	     <id>github</id>
+	     <name>GitHub OWNER Apache Maven Packages</name>
+	     <url>https://maven.pkg.github.com/br-engmanager/api-mail</url>
+	   </repository>
+	</distributionManagement>
 	
 	<dependencies>
 		<dependency>
@@ -38,17 +45,23 @@
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>br.com.tijo</groupId>
-			<artifactId>api-mail-dto</artifactId>
-			<version>1.0.3</version><!--$NO-MVN-MAN-VER$ -->
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.0</version>
+		</dependency>				
+		<dependency>
+		  <groupId>br.com.engmanager</groupId>
+		  <artifactId>jwt-security-tools</artifactId>
+		  <version>1.0.11</version>
 		</dependency>
 		<dependency>
-			<groupId>br.com.tijo</groupId>
-			<artifactId>jwt-security-tools</artifactId>
-			<version>1.0.2</version><!--$NO-MVN-MAN-VER$ -->
-		</dependency>	
-
+		  <groupId>br.com.engmanager</groupId>
+		  <artifactId>api-mail-dto</artifactId>
+		  <version>1.0.4</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -61,6 +74,19 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
+
+  	<repositories>
+	    <repository>
+	      <id>api-mail-dto</id>
+	      <name>api-mail-dto repo</name>
+	      <url>https://maven.pkg.github.com/br-engmanager/api-mail-dto</url>
+	    </repository>
+	    <repository>
+	      <id>jwt-security-tools</id>
+	      <name>jwt-security-tools repo</name>
+	      <url>https://maven.pkg.github.com/br-engmanager/jwt-security-tools</url>
+	    </repository>	    
+	  </repositories>
 
 	<build>
 		<finalName>api-mail</finalName>
