@@ -39,10 +39,10 @@ jobs:
         
       - name: Extract Maven project name
         run: echo ::set-output name=name::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.name}' --non-recursive exec:exec)
-        id: project
+        id: project-name
 
       - name: Show extracted Maven project version
-        run: echo ${{ steps.project.outputs.version }} + "/" ${{ steps.project.outputs.version }}
+        run: echo ${{ steps.project-name.outputs.version }} + "/" ${{ steps.project.outputs.version }}
         
       - name: lista
         run: ls ./target
