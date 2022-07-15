@@ -34,7 +34,7 @@ jobs:
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
 
       - name: lista
-        run: ls 
+        run: ls ./target
 
       - name: Build and push
         uses: docker/build-push-action@v3
