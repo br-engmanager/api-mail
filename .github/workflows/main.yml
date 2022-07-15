@@ -27,9 +27,16 @@ jobs:
           distribution: 'adopt'
           server-id: github
 
+
       - name: Publish package
-        run: mvn -Pgithub -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml --batch-mode deploy 
+        run: mvn -Pgithub -s $GITHUB_WORKSPACE/.github/workflows/maven-settings.xml --batch-mode assembly:assembly 
         env:
           GIT_USER: ${{ secrets.GIT_USER }}
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: api-mail/api-mail:1.0.8
 

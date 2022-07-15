@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.engmanager</groupId>
 	<artifactId>api-mail</artifactId>
-	<version>1.0.7</version>
+	<version>1.0.8</version>
 	<name>api-mail</name>
 	<description>Microsserviço responsável pela comunicação com o cliente (email, what's, sms e etc)</description>
 
