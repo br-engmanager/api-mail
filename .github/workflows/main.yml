@@ -33,12 +33,12 @@ jobs:
           GIT_USER: ${{ secrets.GIT_USER }}
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
 
-	  - name: Extract Maven project version
-	    run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
-	    id: project
-	
-	  - name: Show extracted Maven project version
-	    run: echo ${{ steps.project.outputs.version }}
+      - name: Extract Maven project version
+        run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+        id: project
+
+      - name: Show extracted Maven project version
+        run: echo ${{ steps.project.outputs.version }}
         
       - name: lista
         run: ls ./target
