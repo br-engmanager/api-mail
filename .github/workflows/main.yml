@@ -34,13 +34,10 @@ jobs:
           GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
 
 	  - name: Install manual libraries
-        run: |
-          mvn install:install-file -Dfile=lib/xyz.jar -DgroupId=com.xyz-DartifactId=xyz -Dversion=8.3.0 -Dpackaging=jar
+        run: mvn install:install-file -Dfile=lib/xyz.jar -DgroupId=com.xyz-DartifactId=xyz -Dversion=8.3.0 -Dpackaging=jar
 
       - name: Get version
-        run: |
-          VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout )
-          echo "::set-output name=version::$VERSION"
+        run: VERSION=$( mvn help:evaluate -Dexpression=project.version -q -DforceStdout ) echo "::set-output name=version::$VERSION"
         id: get_version
         
       - name: lista
