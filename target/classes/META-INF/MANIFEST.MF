@@ -3,7 +3,7 @@ Built-By: Cleber
 Build-Jdk: 17.0.2
 Implementation-Title: api-mail
 Implementation-Version: 1.0.7
-Implementation-Vendor-Id: br.com.tijo
+Implementation-Vendor-Id: br.com.engmanager
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
  -starter-parent/api-mail
 Created-By: Maven Integration for Eclipse

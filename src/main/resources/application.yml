@@ -22,7 +22,7 @@ spring:
   mail: 
     host: email-ssl.com.br	
     username: contato@tijo.com.br
-    password: Tijo@$007
+    password: foda-se
     port: 465
     properties: 
       mail:
