@@ -35,26 +35,27 @@ jobs:
 
       - name: Extract Maven project version
         run: echo ::set-output name=version::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
-        id: project
+        id: project-version
         
       - name: Extract Maven project name
         run: echo ::set-output name=name::$(mvn -q -Dexec.executable=echo -Dexec.args='${project.artifactId}' --non-recursive exec:exec)
         id: project-name
 
       - name: Show extracted Maven project version
+        id: project
         run: echo ${{ steps.project-name.outputs.name }}/${{ steps.project.outputs.version }}
         
       - name: lista
-        run: echo ::set-output name=fullname::tijo-repo/${{ steps.project-name.outputs.name }}/${{ steps.project.outputs.version }}
+        id: tag
+        run: echo ::set-output name=fullname::br-engmanager/${{ steps.project-name.outputs.name }}/${{ steps.project-version.outputs.version }}
 
-
-
-      - name: docker teste
-        run: docker build -t tijo-repo/api-mail:1.0.8 .
+      - name: docker build
+        run: docker build -t ${{ steps.tag.outputs.name }} .
         
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: api-mail/api-mail:1.0.8
+      - name: docker tag
+        run: docker tag br-engmanager/${{ steps.tag.outputs.name }} ghcr.io/br-engmanager/${{ steps.tag.outputs.name }}
+                
+      - name: docker push
+        run: docker push ghcr.io/br-engmanager/${{ steps.tag.outputs.name }}
+
 
