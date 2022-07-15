@@ -36,6 +36,9 @@ jobs:
       - name: lista
         run: ls ./target
 
+      - name: docker teste
+        run: docker build -t tijo-repo/api-mail:1.0.8 .
+        
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
