@@ -57,9 +57,9 @@ jobs:
         run: docker build -t ${{ steps.tag.outputs.fullname }} .
         
       - name: docker tag
-        run: docker tag br-engmanager/${{ steps.tag.outputs.fullname }} ghcr.io/br-engmanager/${{ steps.tag.outputs.fullname }}
+        run: docker tag ${{ steps.tag.outputs.fullname }} ghcr.io/${{ steps.tag.outputs.fullname }}
                 
       - name: docker push
-        run: docker push ghcr.io/br-engmanager/${{ steps.tag.outputs.fullname }}
+        run: docker push ghcr.io/${{ steps.tag.outputs.fullname }}
 
 
