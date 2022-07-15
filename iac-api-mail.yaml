@@ -29,14 +29,14 @@ spec:
         app: api-mail
     spec:
       containers:
-      - image: registry.gitlab.com/tijo-repo/api-mail:1.0.7
+      - image: ghcr.io/br-engmanager/api-mail:1.0.8
         imagePullPolicy: IfNotPresent
         name: api-mail
         resources: {}
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       imagePullSecrets:
-        - name: regcred
+        - name: regsecrethub
       dnsPolicy: ClusterFirst
       restartPolicy: Always
       schedulerName: default-scheduler
