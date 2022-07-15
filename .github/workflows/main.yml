@@ -43,19 +43,23 @@ jobs:
 
       - name: Show extracted Maven project version
         id: project
-        run: echo ${{ steps.project-name.outputs.name }}/${{ steps.project.outputs.version }}
+        run: echo ${{ steps.project-name.outputs.name }}/${{ steps.project-version.outputs.version }}
         
-      - name: lista
+      - name: generate tag name
         id: tag
         run: echo ::set-output name=fullname::br-engmanager/${{ steps.project-name.outputs.name }}/${{ steps.project-version.outputs.version }}
 
+      - name: show tag name
+        id: tag-show
+        run: echo ${{ steps.tag.outputs.fullname }}
+
       - name: docker build
-        run: docker build -t ${{ steps.tag.outputs.name }} .
+        run: docker build -t ${{ steps.tag.outputs.fullname }} .
         
       - name: docker tag
-        run: docker tag br-engmanager/${{ steps.tag.outputs.name }} ghcr.io/br-engmanager/${{ steps.tag.outputs.name }}
+        run: docker tag br-engmanager/${{ steps.tag.outputs.fullname }} ghcr.io/br-engmanager/${{ steps.tag.outputs.fullname }}
                 
       - name: docker push
-        run: docker push ghcr.io/br-engmanager/${{ steps.tag.outputs.name }}
+        run: docker push ghcr.io/br-engmanager/${{ steps.tag.outputs.fullname }}
 
 
