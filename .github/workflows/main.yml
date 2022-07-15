@@ -43,11 +43,11 @@ jobs:
 
       - name: Show extracted Maven project version
         id: project
-        run: echo ${{ steps.project-name.outputs.name }}/${{ steps.project-version.outputs.version }}
+        run: echo ${{ steps.project-name.outputs.name }}:${{ steps.project-version.outputs.version }}
         
       - name: generate tag name
         id: tag
-        run: echo ::set-output name=fullname::br-engmanager/${{ steps.project-name.outputs.name }}/${{ steps.project-version.outputs.version }}
+        run: echo ::set-output name=fullname::br-engmanager/${{ steps.project-name.outputs.name }}:${{ steps.project-version.outputs.version }}
 
       - name: show tag name
         id: tag-show
