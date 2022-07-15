@@ -42,10 +42,12 @@ jobs:
         id: project-name
 
       - name: Show extracted Maven project version
-        run: echo ${{ steps.project-name.outputs.version }} + "/" ${{ steps.project.outputs.version }}
+        run: echo ${{ steps.project-name.outputs.name }}/${{ steps.project.outputs.version }}
         
       - name: lista
-        run: ls ./target
+        run: echo ::set-output name=fullname::tijo-repo/${{ steps.project-name.outputs.name }}/${{ steps.project.outputs.version }}
+
+
 
       - name: docker teste
         run: docker build -t tijo-repo/api-mail:1.0.8 .
